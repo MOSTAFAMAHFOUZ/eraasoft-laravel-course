@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 // library and framework
 // package
 // mvc
@@ -42,3 +45,9 @@
     // ( majors , doctors , crud , relationships( one to one , one to many))
     // lazy loading and eager loading   + N
 ////////////////
+
+
+
+
+
+

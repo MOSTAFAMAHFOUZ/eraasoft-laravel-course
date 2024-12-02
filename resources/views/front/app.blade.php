@@ -41,7 +41,18 @@
                             href="{{url('/majors')}}">majors</a>
                         <a type="button" class="btn btn-outline-light navigation--button"
                             href="{{url('/doctors')}}">Doctors</a>
-                        <a type="button" class="btn btn-outline-light navigation--button" href="./login.html">login</a>
+                        @guest
+                        <a type="button" class="btn btn-outline-light navigation--button" href="{{route('login')}}">login</a>
+                        <a type="button" class="btn btn-outline-light navigation--button" href="{{route('auth.register')}}">Register</a>
+                        @endguest
+
+                        @auth
+                            <form action="{{route('auth.logout')}}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-outline-light navigation--button" href="{{route('auth.register')}}">Logout</button>
+                            </form>
+                        @endauth
+
                     </div>
                 </div>
             </div>
@@ -148,9 +159,13 @@
                     <a href="{{url('/')}}" class="link text-white">Home</a>
                     <a href="{{url('/majors')}}" class="link text-white">Majors</a>
                     <a href="{{url('/doctors')}}" class="link text-white">Doctors</a>
-                    <a href="./login.html" class="link text-white">Login</a>
-                    <a href="./register.html" class="link text-white">Register</a>
+                    @guest
+                        <a href="{{route('login')}}" class="link text-white">Login</a>
+                        <a href="{{route('auth.register')}}" class="link text-white">Register</a>
+                    @endguest
+                    @can('make-appointment')
                     <a href="{{url('contact')}}" class="link text-white">Contact</a>
+                    @endcan
                 </div>
             </div>
         </div>
